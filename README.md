@@ -1,2 +1,3 @@
 # react-redux-ts
-初学react
+
+初学 react
