@@ -1,11 +1,16 @@
 import React from 'react';
 import './App.css';
-import MyButton from '@/components/MyButton';
+import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
+import Router from './router';
+import store from './model';
 
 const App = () => (
-  <div className="App">
-    <MyButton />
-  </div>
+  <ConfigProvider>
+    <Provider store={store}>
+      <Router />
+    </Provider>
+  </ConfigProvider>
 );
 
 export default App;

@@ -79,5 +79,8 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     'import/no-extraneous-dependencies': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'import/no-cycle': 'off',
+    'no-param-reassign': 'off',
+    'no-console': 'off',
   },
 };

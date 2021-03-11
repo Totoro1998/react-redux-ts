@@ -5,13 +5,13 @@ function resolve(dir) {
   return path.join(__dirname, dir);
 }
 module.exports = override(
-  //添加lessLoader
+  // 添加lessLoader
   addLessLoader(),
-  //配置别名
+  // 配置别名
   addWebpackAlias({
     '@': resolve('src'),
   }),
-  //配置规则
+  // 配置规则
   addWebpackModuleRule({
     test: /\.svg$/,
     include: [resolve('src/icons')],
