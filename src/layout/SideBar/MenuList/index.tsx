@@ -31,7 +31,7 @@ const MenuItemList: React.FC = () => {
               key={MenuItemList[i].path}
               icon={<SvgIcon iconClass={MenuItemList[i].icon} className={MenuItemList[i].title!} />}
             >
-              <Link to={MenuItemList[i].path}>
+              <Link to={MenuItemList[i].path!}>
                 <span>{MenuItemList[i].title}</span>
               </Link>
             </Menu.Item>,
