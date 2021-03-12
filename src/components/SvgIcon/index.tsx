@@ -10,11 +10,12 @@ const SvgIcon: React.FC<SvgIconProps> = ({ iconClass, className }) => {
   const svgClass = className ? `svg-icon '${className}` : 'svg-icon';
   const iconName = `#icon-${iconClass}`;
   return (
-    <div>
+    // 不要去掉该span
+    <span className="anticon">
       <svg className={svgClass} aria-hidden="true">
         <use xlinkHref={iconName} />
       </svg>
-    </div>
+    </span>
   );
 };
 export default SvgIcon;

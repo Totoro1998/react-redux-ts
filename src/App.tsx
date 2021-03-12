@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import { Provider } from 'react-redux';
 import { ConfigProvider } from 'antd';
+import store from '@/model';
 import Router from './router';
-import store from './model';
 
 const App = () => (
   <ConfigProvider>

@@ -82,5 +82,7 @@ module.exports = {
     'import/no-cycle': 'off',
     'no-param-reassign': 'off',
     'no-console': 'off',
+    '@typescript-eslint/no-shadow': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
 };
