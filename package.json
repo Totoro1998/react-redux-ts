@@ -27,9 +27,11 @@
     "reselect": "^4.0.0",
     "typesafe-actions": "^5.1.0",
     "typescript": "^4.2.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "webpack-bundle-analyzer": "^4.4.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-decorators": "^7.13.5",
     "@types/lodash": "^4.14.139",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -37,6 +39,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
+    "babel-plugin-import": "^1.13.3",
     "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "eslint": "^7.21.0",
@@ -57,6 +60,7 @@
   "scripts": {
     "start": "cross-env PORT=1012 react-app-rewired start",
     "build": "react-app-rewired build",
+    "report": "react-app-rewired build --report",
     "format": "prettier --write \"./**/*.{ts,js,jsx,tsx,less,json,md}\"",
     "lint:fix": "eslint . --ext .js,.ts,.jsx,.ts,.tsx --fix"
   },
