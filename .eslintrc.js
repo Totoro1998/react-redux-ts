@@ -84,5 +84,7 @@ module.exports = {
     'no-console': 'off',
     '@typescript-eslint/no-shadow': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
+    'arrow-body-style': 'off',
+    'consistent-return': 'off',
   },
 };

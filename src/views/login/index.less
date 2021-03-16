@@ -1,0 +1,43 @@
+@import '~@njshaoshao/we-theme/index.less';
+.login-container {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #acacac;
+  .login-wrapper {
+    width: 400px;
+    height: 400px;
+    padding-top: 20px;
+    margin: 0 auto;
+    position: relative;
+    .title {
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      color: white;
+    }
+    .image {
+      height: 120px;
+      width: 120px;
+      margin: 0 auto;
+      margin-top: 50px;
+      image {
+        object-fit: cover;
+      }
+    }
+    .buttons {
+      display: flex;
+      margin-top: 50px;
+      justify-content: space-around;
+      .ant-btn {
+        border-radius: @border-radius-base;
+      }
+      .ant-btn-primary {
+        background-color: @blue-base;
+        border-color: @blue-base;
+      }
+    }
+  }
+}

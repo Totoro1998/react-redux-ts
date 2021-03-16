@@ -3,3 +3,5 @@ dist/*.js
 /tests/unit/coverage
 /node_modules/
 /build
+/src/setupProxy.js
+README.md

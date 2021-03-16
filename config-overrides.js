@@ -7,7 +7,8 @@ const {
   addWebpackModuleRule,
 } = require('customize-cra');
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const weTheme = require('@njshaoshao/we-theme');
 
 function resolve(dir) {
   return path.join(__dirname, dir);
@@ -19,7 +20,7 @@ const addCustomize = () => config => {
     }
   }
   if (process.env.NODE_ENV === 'production') {
-    config.devtool = false; //去掉map文件
+    config.devtool = false; // 去掉map文件
     const splitChunksConfig = config.optimization.splitChunks;
     if (config.entry && config.entry instanceof Array) {
       config.entry = {
@@ -83,7 +84,12 @@ module.exports = override(
     camel2DashComponentName: false,
   }),
   // 添加lessLoader
-  addLessLoader(),
+  addLessLoader({
+    lessOptions: {
+      javascriptEnabled: true,
+      modifyVars: weTheme,
+    },
+  }),
   // 配置别名
   addWebpackAlias({
     '@': resolve('src'),

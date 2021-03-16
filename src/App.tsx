@@ -1,14 +1,17 @@
-import React from 'react';
 import './App.css';
-import { Provider } from 'react-redux';
 import { ConfigProvider } from 'antd';
-import store from '@/model';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import React from 'react';
+import store, { persistor } from '@/model/store';
 import Router from './router';
 
 const App = () => (
   <ConfigProvider>
     <Provider store={store}>
-      <Router />
+      <PersistGate loading={null} persistor={persistor}>
+        <Router />
+      </PersistGate>
     </Provider>
   </ConfigProvider>
 );

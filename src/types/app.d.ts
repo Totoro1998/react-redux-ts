@@ -28,5 +28,12 @@ export interface MenuDataItem {
   /** @name 指定外链打开形式，同a标签 */
   target?: string;
   [key: string]: any;
+  auth: string[];
+}
+export interface RouteConfig {
+  path: string;
+  component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
+  auth: string[];
+  exact?: boolean;
 }
 declare module 'react-custom-scrollbars';

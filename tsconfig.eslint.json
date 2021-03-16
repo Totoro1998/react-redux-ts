@@ -21,6 +21,12 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", ".eslintrc.js", "config-overrides.js"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".eslintrc.js",
+    "config-overrides.js",
+    "setupProxy.js"
+  ],
   "exclude": ["node_modules/**"]
 }

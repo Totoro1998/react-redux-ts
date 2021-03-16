@@ -1,8 +1,8 @@
-import React from 'react';
 import { Layout } from 'antd';
+import React from 'react';
+import Content from './Content';
 import Header from './Header';
 import SideBar from './SideBar';
-import Content from './Content';
 
 const AppMain: React.FC = () => (
   <Layout className="app-main">
