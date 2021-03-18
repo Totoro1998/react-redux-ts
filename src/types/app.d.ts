@@ -16,7 +16,7 @@ export interface MenuDataItem {
   /** @name disable 菜单选项 */
   disabled?: boolean;
   /** @name 路径,可以设定为网页链接 */
-  path?: string;
+  path: string;
   /**
    * 当此节点被选中的时候也会选中 parentKeys 的节点
    *

@@ -3,10 +3,12 @@ import { RootState } from '../type';
 
 interface AppState {
   sidebarCollapsed: boolean;
+  isLogin: boolean;
 }
 
 const initialState: AppState = {
   sidebarCollapsed: false,
+  isLogin: false,
 };
 
 export const appSlice = createSlice({
@@ -16,11 +18,14 @@ export const appSlice = createSlice({
     toggleSiderBar: state => {
       state.sidebarCollapsed = !state.sidebarCollapsed;
     },
+    toggleIsLogin: state => {
+      state.isLogin = !state.isLogin;
+    },
   },
 });
 
-export const { toggleSiderBar } = appSlice.actions;
+export const { toggleSiderBar, toggleIsLogin } = appSlice.actions;
 
-export const sidebarCollapsed = (state: RootState) => state.app.sidebarCollapsed;
+export const appState = (state: RootState) => state.app;
 
 export default appSlice.reducer;

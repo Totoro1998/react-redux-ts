@@ -1,12 +1,13 @@
 import './index.less';
 import { Avatar, Button } from 'antd';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
-import { getCookie, setCookie } from '@/utils/cookies';
+import { setCookie } from '@/utils/cookies';
 import { getQueryVariable } from '@/utils/common';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import image from '@/assets/icon.png';
 import { getUser } from '../../model/slice/userSlice';
+import { toggleIsLogin } from '../../model/slice/appSlice';
 
 type ProductType = 'webeye' | 'outer';
 
@@ -33,19 +34,20 @@ const Login: React.FC<RouteComponentProps> = ({ location }) => {
       webeye: `${env}`,
     };
   };
-  const session = getQueryVariable(location.search, 'session') || getCookie('session');
+  const session = getQueryVariable(location.search, 'session');
   const gotoThirdPartLogin = (type: ProductType) => {
     window.location.href = getGotoUrl()[type];
   };
   useEffect(() => {
     if (session) {
+      dispatch(toggleIsLogin());
       dispatch(getUser());
     }
   }, [dispatch, session]);
   if (session) {
     let redirect = '';
+    setCookie('session', session);
     if (localStorage.getItem('redirect')) {
-      setCookie('session', session);
       redirect = decodeURIComponent(localStorage.getItem('redirect')!);
       localStorage.removeItem('redirect')!;
       return <Redirect to={redirect} />;

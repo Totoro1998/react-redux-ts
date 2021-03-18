@@ -1,14 +1,21 @@
-import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Menu } from 'antd';
 import { MenuDataItem } from '@/types/app';
 import { Scrollbars } from 'rc-scrollbars';
 import { hasAuth } from '@/utils/common';
-import React, { ReactNode } from 'react';
+import map from 'lodash/map';
+import { useSelector } from 'react-redux';
+import React from 'react';
 import SvgIcon from '@/components/SvgIcon';
 import menuList from '@/config/menuConfig';
+import { formatMenuPath, formatSelectedKeys } from '@/utils/menu';
+import { RootState } from '@/model/type';
 
-const MenuItemList: React.FC<RouteComponentProps> = ({ location }) => {
-  const path = location.pathname;
+const MenuItemList: React.FC = () => {
+  const pathname = useSelector((state: RootState) => {
+    return state.router.location.pathname;
+  });
+  const selectedKeys = formatSelectedKeys(formatMenuPath(menuList), pathname);
   const menuRoles = [
     'menu-about',
     'menu-charts',
@@ -18,45 +25,31 @@ const MenuItemList: React.FC<RouteComponentProps> = ({ location }) => {
     'menu-table',
     'menu-user',
   ];
-  const createMenu = (MenuItemList: MenuDataItem[]) => {
-    let submenuIndex = 0; // 累计的每一项展开菜单索引
-    const menu: ReactNode[] = [];
-    const create = (MenuItemList: MenuDataItem[], el: ReactNode[]) => {
-      for (let i = 0; i < MenuItemList.length; i += 1) {
-        if (hasAuth(MenuItemList[i].auth, menuRoles) && MenuItemList[i].children) {
-          const children: ReactNode[] = [];
-          create(MenuItemList[i].children!, children);
-          submenuIndex += 1;
-          el.push(
-            <Menu.SubMenu
-              key={`sub${submenuIndex}`}
-              icon={<SvgIcon iconClass={MenuItemList[i].icon} />}
-              title={MenuItemList[i].title}
-            >
-              {children}
-            </Menu.SubMenu>,
-          );
-        } else if (hasAuth(MenuItemList[i].auth, menuRoles)) {
-          el.push(
-            <Menu.Item
-              key={MenuItemList[i].path}
-              icon={<SvgIcon iconClass={MenuItemList[i].icon} />}
-            >
-              <Link to={MenuItemList[i].path!}>
-                <span>{MenuItemList[i].title}</span>
-              </Link>
-            </Menu.Item>,
-          );
-        }
+  const renderMenu = (MenuItemList: MenuDataItem[]) => {
+    return map(MenuItemList, (item: MenuDataItem) => {
+      if (hasAuth(item.auth, menuRoles) && item.children) {
+        return (
+          <Menu.SubMenu key={item.path} title={item.title} icon={<SvgIcon iconClass={item.icon} />}>
+            {renderMenu(item.children)}
+          </Menu.SubMenu>
+        );
       }
-    };
-    create(MenuItemList, menu);
-    return menu;
+      if (hasAuth(item.auth, menuRoles)) {
+        return (
+          <Menu.Item key={item.path} icon={<SvgIcon iconClass={item.icon} />}>
+            <Link to={item.path} href={item.path}>
+              <span>{item.title}</span>
+            </Link>
+          </Menu.Item>
+        );
+      }
+      return null;
+    });
   };
   return (
     <Scrollbars>
-      <Menu mode="inline" theme="dark" selectedKeys={[path]}>
-        {createMenu(menuList)}
+      <Menu mode="inline" theme="dark" selectedKeys={selectedKeys}>
+        {renderMenu(formatMenuPath(menuList))}
       </Menu>
     </Scrollbars>
   );

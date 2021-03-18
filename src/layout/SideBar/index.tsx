@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Logo from '@/assets/icon.png';
 import React from 'react';
 import MenuItemList from './MenuList';
-import { sidebarCollapsed, toggleSiderBar } from '../../model/slice/appSlice';
+import { appState, toggleSiderBar } from '../../model/slice/appSlice';
 
 const { Sider } = Layout;
 const SideBar: React.FC = () => {
-  const Collapsed = useSelector(sidebarCollapsed);
+  const Collapsed = useSelector(appState).sidebarCollapsed;
   const dispatch = useDispatch();
   return (
     <Sider collapsible collapsed={Collapsed} onCollapse={() => dispatch(toggleSiderBar())}>

@@ -1,24 +1,24 @@
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import { getCookie } from '@/utils/cookies';
-import { getQueryVariable } from '@/utils/common';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import AppMain from '@/layout';
 import Login from '@/views/login';
 import React from 'react';
 import localStorage from 'redux-persist/es/storage';
+import { ConnectedRouter } from 'connected-react-router';
+import { useSelector } from 'react-redux';
+import { appState } from '@/model/slice/appSlice';
 
-const Router: React.FC = () => {
-  const history = createBrowserHistory();
-  const casSession = getQueryVariable(history.location.search, 'session') || getCookie('session');
+interface RouterType {
+  history: any;
+}
+const Router: React.FC<RouterType> = ({ history }) => {
   const redirectPath = history.location.pathname;
-  const session = getCookie('session');
   const redirectSearch = history.location.search;
-  const showAppMain = session || casSession;
+  const showAppMain = useSelector(appState).isLogin;
   if (!(redirectPath.includes('login') || redirectSearch.includes('session'))) {
     localStorage.setItem('redirect', encodeURIComponent(redirectPath + redirectSearch));
   }
   return (
-    <BrowserRouter>
+    <ConnectedRouter history={history}>
       <Switch>
         <Route path="/login" component={Login} />
         <Route
@@ -32,7 +32,7 @@ const Router: React.FC = () => {
           }
         />
       </Switch>
-    </BrowserRouter>
+    </ConnectedRouter>
   );
 };
 
