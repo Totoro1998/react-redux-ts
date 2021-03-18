@@ -12,11 +12,9 @@ const SideBar: React.FC = () => {
   const dispatch = useDispatch();
   return (
     <Sider collapsible collapsed={Collapsed} onCollapse={() => dispatch(toggleSiderBar())}>
-      {Collapsed ? null : (
-        <div className="sidebarLogo">
-          <img src={Logo} alt="Harbor Pub" />
-        </div>
-      )}
+      <div className="sidebarLogo">
+        <img src={Logo} alt="Harbor Pub" />
+      </div>
       <MenuItemList />
     </Sider>
   );
