@@ -8,8 +8,8 @@ import { appState, toggleSiderBar } from '../../model/slice/appSlice';
 
 const { Sider } = Layout;
 const SideBar: React.FC = () => {
-  const Collapsed = useSelector(appState).sidebarCollapsed;
   const dispatch = useDispatch();
+  const Collapsed = useSelector(appState).sidebarCollapsed;
   return (
     <Sider collapsible collapsed={Collapsed} onCollapse={() => dispatch(toggleSiderBar())}>
       <div className="sidebarLogo">

@@ -40,12 +40,12 @@ const Login: React.FC<RouteComponentProps> = ({ location }) => {
   };
   useEffect(() => {
     if (session) {
-      dispatch(toggleIsLogin());
       dispatch(getUser());
     }
   }, [dispatch, session]);
   if (session) {
     let redirect = '';
+    dispatch(toggleIsLogin());
     setCookie('session', session);
     if (localStorage.getItem('redirect')) {
       redirect = decodeURIComponent(localStorage.getItem('redirect')!);

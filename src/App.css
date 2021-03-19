@@ -2,3 +2,6 @@
 .app-main {
   min-height: 100vh !important;
 }
+.ant-dropdown-trigger {
+  cursor: pointer;
+}

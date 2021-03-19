@@ -1,13 +1,22 @@
 .header-layout {
   position: relative;
   background-color: white;
-  .dropdown-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 100px;
+  .fold-container {
+    display: inline-block;
+    float: left;
+    width: 64px;
+    text-align: center;
     cursor: pointer;
+    span {
+      vertical-align: middle;
+    }
+    svg {
+      font-size: 24px;
+    }
+  }
+  .dropdown-container {
+    width: 100px;
+    float: right;
     display: inline-block;
     text-align: center;
     line-height: 64px;

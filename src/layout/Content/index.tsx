@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { Redirect, Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { hasAuth } from '@/utils/common';
 import React from 'react';
-import routeList from '@/config/route';
+import { getFlatRoutes } from '@/config/route';
 
 const { Content } = Layout;
 const ContentLayout: React.FC<RouteComponentProps> = ({ location }) => {
@@ -22,6 +22,7 @@ const ContentLayout: React.FC<RouteComponentProps> = ({ location }) => {
     }
     return hasAuth(route, routeRoles);
   };
+  const routeList = getFlatRoutes();
   return (
     <Content style={{ height: 'calc(100% - 100px)' }}>
       <TransitionGroup>
@@ -31,7 +32,12 @@ const ContentLayout: React.FC<RouteComponentProps> = ({ location }) => {
             {routeList.map(route => {
               return (
                 handleFilter(route.auth) && (
-                  <Route component={route.component} key={route.path} path={route.path} />
+                  <Route
+                    exact={route.exact}
+                    component={route.component}
+                    key={route.path}
+                    path={route.path}
+                  />
                 )
               );
             })}
