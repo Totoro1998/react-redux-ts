@@ -1,4 +1,3 @@
-import './index.less';
 import { useSelector } from 'react-redux';
 import { userState } from '@/model/slice/userSlice';
 import React from 'react';

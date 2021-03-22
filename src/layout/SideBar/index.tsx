@@ -1,8 +1,8 @@
-import './index.less';
 import { Layout } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import Logo from '@/assets/icon.png';
 import React from 'react';
+import Style from './index.module.less';
 import MenuItemList from './MenuList';
 import { appState, toggleSiderBar } from '../../model/slice/appSlice';
 
@@ -12,7 +12,7 @@ const SideBar: React.FC = () => {
   const Collapsed = useSelector(appState).sidebarCollapsed;
   return (
     <Sider collapsible collapsed={Collapsed} onCollapse={() => dispatch(toggleSiderBar())}>
-      <div className="sidebarLogo">
+      <div className={Style.sidebarLogo}>
         <img src={Logo} alt="Harbor Pub" />
       </div>
       <MenuItemList />

@@ -13,10 +13,10 @@ interface RouterType {
 const Router: React.FC<RouterType> = ({ history }) => {
   const redirectPath = history.location.pathname;
   const redirectSearch = history.location.search;
-  const showAppMain = useSelector(appState).isLogin;
   if (!(redirectPath.includes('login') || redirectSearch.includes('session'))) {
     localStorage.setItem('redirect', encodeURIComponent(redirectPath + redirectSearch));
   }
+  const showAppMain = useSelector(appState).isLogin;
   return (
     <ConnectedRouter history={history}>
       <Switch>

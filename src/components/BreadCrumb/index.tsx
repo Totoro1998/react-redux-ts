@@ -7,7 +7,7 @@ import { urlToList } from '@/utils/menu';
 import { RouteItemConfig } from '@/types/app';
 import { Link } from 'react-router-dom';
 import { pathToRegexp } from 'path-to-regexp';
-import './index.less';
+import Style from './index.module.less';
 
 const BreadCrumb = () => {
   const flatRoute = getFlatRoutes();
@@ -60,9 +60,7 @@ const BreadCrumb = () => {
     return BreadcrumbItemList;
   };
   return (
-    <Breadcrumb className="breadcrumb-container">
-      {createBreadcrumbItemList(matchedUrls)}
-    </Breadcrumb>
+    <Breadcrumb className={Style.container}>{createBreadcrumbItemList(matchedUrls)}</Breadcrumb>
   );
 };
 

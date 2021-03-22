@@ -1,4 +1,3 @@
-import './index.less';
 import { Avatar, Button } from 'antd';
 import { Redirect, RouteComponentProps, withRouter } from 'react-router-dom';
 import { setCookie } from '@/utils/cookies';
@@ -6,6 +5,7 @@ import { getQueryVariable } from '@/utils/common';
 import { useDispatch } from 'react-redux';
 import React, { useEffect } from 'react';
 import image from '@/assets/icon.png';
+import Style from './index.module.less';
 import { getUser } from '../../model/slice/userSlice';
 import { toggleIsLogin } from '../../model/slice/appSlice';
 
@@ -55,14 +55,14 @@ const Login: React.FC<RouteComponentProps> = ({ location }) => {
     return <Redirect to="/" />;
   }
   return (
-    <div className="login-container">
-      <div className="login-wrapper">
-        <div className="title">Harbor Pub</div>
-        <div className="image">
+    <div className={Style.container}>
+      <div className={Style.wrapper}>
+        <div className={Style.title}>Harbor Pub</div>
+        <div className={Style.image}>
           <Avatar shape="circle" size={120} src={image} />
         </div>
-        <div className="buttons">
-          <Button type="primary" onClick={() => gotoThirdPartLogin('webeye')} className="bo">
+        <div className={Style.buttons}>
+          <Button type="primary" onClick={() => gotoThirdPartLogin('webeye')}>
             正式员工飞书登录
           </Button>
           <Button type="primary">外部员工飞书登录</Button>

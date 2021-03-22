@@ -2,7 +2,7 @@ import 'nprogress/nprogress.css';
 import { Spin } from 'antd';
 import NProgress from 'nprogress'; // progress bar
 import React, { useEffect } from 'react'; // progress bar style
-import './index.less';
+import Style from './index.module.less';
 
 NProgress.configure({ showSpinner: false }); // NProgress Configuration
 
@@ -15,7 +15,7 @@ const Loading = () => {
   }, []);
 
   return (
-    <div className="loading-container">
+    <div className={Style.container}>
       <Spin />
     </div>
   );

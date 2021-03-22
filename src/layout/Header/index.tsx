@@ -1,4 +1,3 @@
-import './index.less';
 import { Layout, Menu, Dropdown, Avatar } from 'antd';
 import React from 'react';
 import { push } from 'connected-react-router';
@@ -9,6 +8,7 @@ import BreadCrumb from '@/components/BreadCrumb';
 import { userState } from '@/model/slice/userSlice';
 import SvgIcon from '@/components/SvgIcon';
 import { RootState } from '@/model/type';
+import Style from './index.module.less';
 
 const { Header } = Layout;
 const HeaderLayout: React.FC = () => {
@@ -38,12 +38,12 @@ const HeaderLayout: React.FC = () => {
     </Menu>
   );
   return (
-    <Header className="header-layout" style={{ padding: 0 }}>
-      <div className="fold-container" onClick={() => dispatch(toggleSiderBar())}>
+    <Header className={Style['header-layout']} style={{ padding: 0 }}>
+      <div className={Style['fold-container']} onClick={() => dispatch(toggleSiderBar())}>
         <SvgIcon iconClass={appConfig.sidebarCollapsed ? 'indent' : 'outdent'} />
       </div>
       {pathname === '/' ? null : <BreadCrumb />}
-      <Dropdown overlay={menu} className="dropdown-container">
+      <Dropdown overlay={menu} className={Style['dropdown-container']}>
         <div>
           <Avatar shape="circle" size={40} src={userInfo.avatar} />
         </div>

@@ -1,15 +1,15 @@
 import { Link, withRouter } from 'react-router-dom';
-import { Menu } from 'antd';
 import { RouteItemConfig } from '@/types/app';
 import { Scrollbars } from 'rc-scrollbars';
 import { hasAuth } from '@/utils/common';
-import map from 'lodash/map';
-import { useSelector } from 'react-redux';
 import React from 'react';
 import SvgIcon from '@/components/SvgIcon';
-import Routes from '@/config/route';
 import { formatMenuPath, formatSelectedKeys } from '@/utils/menu';
 import { RootState } from '@/model/type';
+import { useSelector } from 'react-redux';
+import map from 'lodash/map';
+import Routes from '@/config/route';
+import { Menu } from 'antd';
 
 const MenuItemList: React.FC = () => {
   const pathname = useSelector((state: RootState) => {
@@ -39,7 +39,7 @@ const MenuItemList: React.FC = () => {
           </Menu.SubMenu>
         );
       }
-      if (hasAuth(item.auth, menuRoles)) {
+      if (hasAuth(item.auth, menuRoles) && !item.hideInMenu && !item.hideChildrenInMenu) {
         return (
           <Menu.Item key={item.path} icon={<SvgIcon iconClass={item.icon} />}>
             <Link to={item.path} href={item.path}>

@@ -1,4 +1,3 @@
-import './index.less';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Layout } from 'antd';
 import { Redirect, Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
