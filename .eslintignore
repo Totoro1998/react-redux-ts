@@ -2,6 +2,7 @@ dist/*.js
 /src/assets
 /tests/unit/coverage
 /node_modules/
-/build
+/dist
 /src/setupProxy.js
 README.md
+/config

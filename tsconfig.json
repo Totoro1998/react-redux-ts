@@ -23,22 +23,32 @@
     "noImplicitThis": true,
     "removeComments": false,
     "strictFunctionTypes": false,
-    "types": ["webpack-env"],
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "types": [
+      "webpack-env"
+    ],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
     "noEmit": true
   },
   "include": [
+    "config/**/*.js",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
     ".eslintrc.js",
+    "config-overrides.js",
     "config-overrides.js",
     "setupProxy.js"
   ],
-  "exclude": ["node_modules", "dist"],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
   "extends": "./paths.json"
 }

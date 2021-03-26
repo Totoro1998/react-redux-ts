@@ -8,7 +8,7 @@ const MixChart = Loadable({ loader: () => import('@/views/charts/mixchart'), loa
 const ChartsRoute: RouteItemConfig = {
   title: '图表',
   path: 'charts',
-  icon: 'dashboard',
+  icon: 'admin',
   hideInMenu: false,
   exact: true,
   auth: ['menu-charts'],
@@ -16,7 +16,7 @@ const ChartsRoute: RouteItemConfig = {
     {
       title: '键盘图表',
       path: 'keyboard',
-      icon: 'chart',
+      icon: 'admin',
       component: Keyboard,
       hideInMenu: false,
       exact: true,
@@ -25,7 +25,7 @@ const ChartsRoute: RouteItemConfig = {
     {
       title: '折线图',
       path: 'line',
-      icon: 'chart',
+      icon: 'admin',
       component: LineChart,
       hideInMenu: false,
       exact: true,

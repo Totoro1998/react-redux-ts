@@ -7,7 +7,7 @@ const Table = Loadable({ loader: () => import('@/views/table'), loading: Loading
 const TableRoute: RouteItemConfig = {
   title: '表格',
   path: 'table',
-  icon: 'table',
+  icon: 'admin',
   component: Table,
   hideInMenu: false,
   exact: true,

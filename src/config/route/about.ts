@@ -6,7 +6,7 @@ const About = Loadable({ loader: () => import('@/views/about'), loading: Loading
 const AboutRoute: RouteItemConfig = {
   title: '关于',
   path: 'about',
-  icon: 'guide',
+  icon: 'admin',
   component: About,
   hideInMenu: false,
   exact: true,

@@ -6,7 +6,7 @@ const User = Loadable({ loader: () => import('@/views/user'), loading: Loading }
 const UserRoute: RouteItemConfig = {
   title: '用户',
   path: 'user',
-  icon: 'user',
+  icon: 'admin',
   component: User,
   hideInMenu: false,
   exact: true,

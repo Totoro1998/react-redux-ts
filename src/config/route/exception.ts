@@ -10,7 +10,7 @@ const Error404 = Loadable({
 const CommonRoute: RouteItemConfig = {
   title: '设置',
   path: 'common',
-  icon: 'dashboard',
+  icon: 'admin',
   hideInMenu: true,
   hideChildrenInMenu: true,
   exact: true,
@@ -19,7 +19,7 @@ const CommonRoute: RouteItemConfig = {
     {
       title: '404',
       path: '404',
-      icon: '404',
+      icon: 'admin',
       component: Error404,
       hideInMenu: true,
       exact: true,

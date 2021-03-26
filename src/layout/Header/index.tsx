@@ -40,7 +40,7 @@ const HeaderLayout: React.FC = () => {
   return (
     <Header className={Style['header-layout']} style={{ padding: 0 }}>
       <div className={Style['fold-container']} onClick={() => dispatch(toggleSiderBar())}>
-        <SvgIcon iconClass={appConfig.sidebarCollapsed ? 'indent' : 'outdent'} />
+        <SvgIcon iconClass={appConfig.sidebarCollapsed ? 'tianjia' : 'wenben'} />
       </div>
       {pathname === '/' ? null : <BreadCrumb />}
       <Dropdown overlay={menu} className={Style['dropdown-container']}>
